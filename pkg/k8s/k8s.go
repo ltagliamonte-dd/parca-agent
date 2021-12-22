@@ -62,6 +62,7 @@ func NewK8sClient(logger log.Logger, nodeName, socketPath string) (*K8sClient, e
 			return nil, fmt.Errorf("create in-cluster config: %w", err)
 		}
 	}
+	config.UserAgent = "parca-agent"
 
 	clientset, err := kubernetes.NewForConfig(config)
 	if err != nil {
